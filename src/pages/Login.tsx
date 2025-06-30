@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Building2 } from 'lucide-react';
+import { Building2, Zap } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
@@ -31,6 +31,31 @@ export function Login() {
       }
     } catch (error) {
       showToast('error', 'فشل في تسجيل الدخول. يرجى المحاولة مرة أخرى.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleQuickLogin = async (userType: 'admin' | 'supervisor' | 'viewer') => {
+    setLoading(true);
+    
+    const credentials = {
+      admin: { username: 'admin', password: 'admin123' },
+      supervisor: { username: 'supervisor', password: 'super123' },
+      viewer: { username: 'viewer', password: 'view123' }
+    };
+
+    const { username: user, password: pass } = credentials[userType];
+    
+    try {
+      const success = await login(user, pass);
+      if (success) {
+        showToast('success', `تم تسجيل الدخول كـ ${userType === 'admin' ? 'مدير' : userType === 'supervisor' ? 'مشرف' : 'مستخدم'}`);
+      } else {
+        showToast('error', 'فشل في تسجيل الدخول');
+      }
+    } catch (error) {
+      showToast('error', 'فشل في تسجيل الدخول');
     } finally {
       setLoading(false);
     }
@@ -76,8 +101,46 @@ export function Login() {
           </Button>
         </form>
 
+        {/* Quick Login Section */}
         <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
-          <div className="text-center">
+          <div className="text-center mb-3">
+            <div className="flex items-center justify-center mb-2">
+              <Zap className="w-4 h-4 text-blue-600 ml-1" />
+              <span className="text-sm font-medium text-gray-700">دخول سريع للاختبار</span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 gap-2">
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => handleQuickLogin('admin')}
+              disabled={loading}
+              className="w-full text-xs"
+            >
+              دخول كمدير (صلاحيات كاملة)
+            </Button>
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => handleQuickLogin('supervisor')}
+              disabled={loading}
+              className="w-full text-xs"
+            >
+              دخول كمشرف (قراءة وكتابة)
+            </Button>
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => handleQuickLogin('viewer')}
+              disabled={loading}
+              className="w-full text-xs"
+            >
+              دخول كمستخدم (قراءة فقط)
+            </Button>
+          </div>
+          
+          <div className="mt-3 text-center">
             <button className="text-xs sm:text-sm text-blue-600 hover:text-blue-800">
               نسيت كلمة المرور؟
             </button>

@@ -1,8 +1,6 @@
 import { create } from 'zustand';
 import { AppState, Client, Project, Contract, Payment, Invoice, Maintenance, User } from '../types';
-
-// const API_BASE = 'http://localhost:3001';
-const API_BASE = 'https://nekaz.vercel.app/';
+import { API_ENDPOINTS } from '../config/api';
 
 export const useAppStore = create<AppState>((set, get) => ({
   clients: [],
@@ -19,13 +17,13 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ loading: true, error: null });
     try {
       const [clientsRes, projectsRes, contractsRes, paymentsRes, invoicesRes, maintenancesRes, usersRes] = await Promise.all([
-        fetch(`${API_BASE}/clients`),
-        fetch(`${API_BASE}/projects`),
-        fetch(`${API_BASE}/contracts`),
-        fetch(`${API_BASE}/payments`),
-        fetch(`${API_BASE}/invoices`),
-        fetch(`${API_BASE}/maintenances`),
-        fetch(`${API_BASE}/users`),
+        fetch(API_ENDPOINTS.clients),
+        fetch(API_ENDPOINTS.projects),
+        fetch(API_ENDPOINTS.contracts),
+        fetch(API_ENDPOINTS.payments),
+        fetch(API_ENDPOINTS.invoices),
+        fetch(API_ENDPOINTS.maintenances),
+        fetch(API_ENDPOINTS.users),
       ]);
 
       const [clients, projects, contracts, payments, invoices, maintenances, users] = await Promise.all([
@@ -54,7 +52,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         createdAt: new Date().toISOString(),
       };
 
-      const response = await fetch(`${API_BASE}/clients`, {
+      const response = await fetch(API_ENDPOINTS.clients, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newClient),
@@ -72,7 +70,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   updateClient: async (id, clientData) => {
     try {
-      const response = await fetch(`${API_BASE}/clients/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.clients}/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(clientData),
@@ -92,7 +90,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   deleteClient: async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/clients/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.clients}/${id}`, {
         method: 'DELETE',
       });
 
@@ -116,7 +114,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         createdAt: new Date().toISOString(),
       };
 
-      const response = await fetch(`${API_BASE}/projects`, {
+      const response = await fetch(API_ENDPOINTS.projects, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newProject),
@@ -134,7 +132,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   updateProject: async (id, projectData) => {
     try {
-      const response = await fetch(`${API_BASE}/projects/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.projects}/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(projectData),
@@ -154,7 +152,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   deleteProject: async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/projects/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.projects}/${id}`, {
         method: 'DELETE',
       });
 
@@ -178,7 +176,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         createdAt: new Date().toISOString(),
       };
 
-      const response = await fetch(`${API_BASE}/contracts`, {
+      const response = await fetch(API_ENDPOINTS.contracts, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newContract),
@@ -196,7 +194,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   updateContract: async (id, contractData) => {
     try {
-      const response = await fetch(`${API_BASE}/contracts/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.contracts}/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contractData),
@@ -216,7 +214,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   deleteContract: async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/contracts/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.contracts}/${id}`, {
         method: 'DELETE',
       });
 
@@ -240,7 +238,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         createdAt: new Date().toISOString(),
       };
 
-      const response = await fetch(`${API_BASE}/payments`, {
+      const response = await fetch(API_ENDPOINTS.payments, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newPayment),
@@ -258,7 +256,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   updatePayment: async (id, paymentData) => {
     try {
-      const response = await fetch(`${API_BASE}/payments/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.payments}/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(paymentData),
@@ -278,7 +276,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   deletePayment: async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/payments/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.payments}/${id}`, {
         method: 'DELETE',
       });
 
@@ -302,7 +300,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         createdAt: new Date().toISOString(),
       };
 
-      const response = await fetch(`${API_BASE}/invoices`, {
+      const response = await fetch(API_ENDPOINTS.invoices, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newInvoice),
@@ -320,7 +318,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   updateInvoice: async (id, invoiceData) => {
     try {
-      const response = await fetch(`${API_BASE}/invoices/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.invoices}/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(invoiceData),
@@ -340,7 +338,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   deleteInvoice: async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/invoices/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.invoices}/${id}`, {
         method: 'DELETE',
       });
 
@@ -364,7 +362,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         createdAt: new Date().toISOString(),
       };
 
-      const response = await fetch(`${API_BASE}/maintenances`, {
+      const response = await fetch(API_ENDPOINTS.maintenances, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMaintenance),
@@ -382,7 +380,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   updateMaintenance: async (id, maintenanceData) => {
     try {
-      const response = await fetch(`${API_BASE}/maintenances/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.maintenances}/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(maintenanceData),
@@ -402,7 +400,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   deleteMaintenance: async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/maintenances/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.maintenances}/${id}`, {
         method: 'DELETE',
       });
 
@@ -425,7 +423,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         id: Date.now().toString(),
       };
 
-      const response = await fetch(`${API_BASE}/users`, {
+      const response = await fetch(API_ENDPOINTS.users, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUser),
@@ -449,7 +447,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         delete updateData.password;
       }
 
-      const response = await fetch(`${API_BASE}/users/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.users}/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updateData),
@@ -469,7 +467,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   deleteUser: async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/users/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.users}/${id}`, {
         method: 'DELETE',
       });
 

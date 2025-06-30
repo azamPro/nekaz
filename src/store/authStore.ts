@@ -1,9 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { AuthState, User } from '../types';
-
-// const API_BASE = 'http://localhost:3001';
-const API_BASE = 'https://nekaz.vercel.app';
+import { API_ENDPOINTS } from '../config/api';
 
 export const useAuthStore = create<AuthState>()(
   persist(
@@ -13,7 +11,7 @@ export const useAuthStore = create<AuthState>()(
       
       login: async (username: string, password: string) => {
         try {
-          const response = await fetch(`${API_BASE}/users`);
+          const response = await fetch(API_ENDPOINTS.users);
           const users: User[] = await response.json();
           
           const user = users.find(u => u.username === username && u.password === password);

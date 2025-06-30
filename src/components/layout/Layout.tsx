@@ -37,42 +37,28 @@ export function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Desktop Layout */}
-      <div className="hidden lg:flex min-h-screen">
-        {/* Desktop Sidebar */}
-        <div className="w-64 flex-shrink-0">
-          <Sidebar isOpen={true} onClose={() => {}} />
-        </div>
-        
-        {/* Desktop Main Content */}
-        <div className="flex-1 flex flex-col min-w-0">
-          <Header 
-            onMobileMenuToggle={toggleMobileMenu} 
-            isMobileMenuOpen={isMobileMenuOpen}
-          />
-          <main className="flex-1 overflow-auto">
-            <div className="container mx-auto px-6 py-8 max-w-full">
-              {children}
-            </div>
-          </main>
-        </div>
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Desktop Sidebar - Always visible on desktop */}
+      <div className="hidden lg:block w-64 flex-shrink-0">
+        <Sidebar isOpen={true} onClose={() => {}} />
       </div>
 
-      {/* Mobile Layout */}
-      <div className="lg:hidden min-h-screen flex flex-col">
-        {/* Mobile Header */}
+      {/* Mobile Sidebar - Overlay on mobile */}
+      <div className="lg:hidden">
+        <Sidebar isOpen={isMobileMenuOpen} onClose={closeMobileMenu} />
+      </div>
+
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Header */}
         <Header 
           onMobileMenuToggle={toggleMobileMenu} 
           isMobileMenuOpen={isMobileMenuOpen}
         />
         
-        {/* Mobile Sidebar */}
-        <Sidebar isOpen={isMobileMenuOpen} onClose={closeMobileMenu} />
-        
-        {/* Mobile Main Content */}
+        {/* Main Content */}
         <main className="flex-1 overflow-auto">
-          <div className="container mx-auto px-4 py-6 max-w-full">
+          <div className="container mx-auto px-4 lg:px-6 py-6 lg:py-8 max-w-full">
             {children}
           </div>
         </main>
