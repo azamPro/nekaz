@@ -6,7 +6,7 @@ const getApiBaseUrl = () => {
   }
   
   // Development environment
-  return 'http://localhost:3001';
+  return 'https://nekaz.vercel.app';
 };
 
 export const API_BASE = getApiBaseUrl();
