@@ -2,7 +2,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { AuthState, User } from '../types';
 
-const API_BASE = 'http://localhost:3001';
+// const API_BASE = 'http://localhost:3001';
+const API_BASE = 'https://nekaz.vercel.app';
 
 export const useAuthStore = create<AuthState>()(
   persist(

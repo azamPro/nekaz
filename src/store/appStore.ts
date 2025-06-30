@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { AppState, Client, Project, Contract, Payment, Invoice, Maintenance, User } from '../types';
 
-const API_BASE = 'http://localhost:3001';
+// const API_BASE = 'http://localhost:3001';
+const API_BASE = 'https://nekaz.vercel.app/';
 
 export const useAppStore = create<AppState>((set, get) => ({
   clients: [],
