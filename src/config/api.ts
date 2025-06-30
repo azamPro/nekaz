@@ -2,7 +2,7 @@
 const getApiBaseUrl = () => {
   // Check if we're in production (Vercel deployment)
   if (import.meta.env.VITE_APP_ENV === 'production') {
-    return import.meta.env.VITE_API_BASE_URL || 'https://your-api-domain.com';
+    return import.meta.env.VITE_API_BASE_URL || 'https://nekaz.vercel.app';
   }
   
   // Development environment
