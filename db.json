@@ -1,0 +1,232 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin",
+      "name": "مدير النظام",
+      "email": "admin@nakaz.com"
+    },
+    {
+      "id": "2",
+      "username": "supervisor",
+      "password": "super123",
+      "role": "supervisor",
+      "name": "مشرف النظام",
+      "email": "supervisor@nakaz.com"
+    },
+    {
+      "id": "3",
+      "username": "viewer",
+      "password": "view123",
+      "role": "viewer",
+      "name": "مستخدم عادي",
+      "email": "viewer@nakaz.com"
+    }
+  ],
+  "clients": [
+    {
+      "id": "1",
+      "clientNumber": "1100",
+      "name": "شركة البرج الذهبي المحدودة",
+      "type": "شركة",
+      "email": "ahmed@goldentower.ae",
+      "phone": "+971-4-123-4567",
+      "location": "دبي مارينا، البرج أ، الطابق 25",
+      "buildingImages": [
+        "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg"
+      ],
+      "contractStatus": "نشط",
+      "warrantyStatus": "ساري",
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "clientNumber": "1101",
+      "name": "الإمارات السكنية",
+      "type": "شركة",
+      "email": "fatima@emirates-res.ae",
+      "phone": "+971-2-987-6543",
+      "location": "أبوظبي، منطقة الكورنيش",
+      "buildingImages": [
+        "https://images.pexels.com/photos/1370704/pexels-photo-1370704.jpeg"
+      ],
+      "contractStatus": "نشط",
+      "warrantyStatus": "ساري",
+      "createdAt": "2024-02-20T14:15:00Z"
+    },
+    {
+      "id": "3",
+      "clientNumber": "1102",
+      "name": "محمد أحمد الزهراني",
+      "type": "فرد",
+      "email": "mohammed@example.com",
+      "phone": "+966-50-123-4567",
+      "location": "الرياض، حي الملك فهد",
+      "buildingImages": [
+        "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg"
+      ],
+      "contractStatus": "منتهي",
+      "warrantyStatus": "منتهي",
+      "createdAt": "2024-03-10T09:45:00Z"
+    },
+    {
+      "clientNumber": "88",
+      "name": "fgd",
+      "type": "شركة",
+      "phone": "543543",
+      "email": "azam.alkhodiriy@gmail.com",
+      "location": "3f",
+      "contractStatus": "نشط",
+      "warrantyStatus": "ساري",
+      "id": "1751245216116",
+      "createdAt": "2025-06-30T01:00:16.116Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "name": "تركيب مصاعد البرج الذهبي",
+      "type": "تركيب",
+      "clientId": "1",
+      "status": "قيد التنفيذ",
+      "startDate": "2024-01-20",
+      "endDate": "2024-04-15",
+      "description": "تركيب 4 مصاعد عالية السرعة في البرج التجاري",
+      "createdAt": "2024-01-15T11:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "عقد صيانة الإمارات",
+      "type": "صيانة",
+      "clientId": "2",
+      "status": "نشط",
+      "startDate": "2024-02-01",
+      "endDate": "2025-01-31",
+      "description": "صيانة سنوية لـ 12 مصعد سكني",
+      "createdAt": "2024-01-25T16:30:00Z"
+    },
+    {
+      "id": "3",
+      "name": "إصلاح مصعد الزهراني",
+      "type": "إصلاح",
+      "clientId": "3",
+      "status": "مكتمل",
+      "startDate": "2024-03-15",
+      "endDate": "2024-03-20",
+      "description": "إصلاح طارئ لنظام محرك المصعد",
+      "createdAt": "2024-03-14T08:20:00Z"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "1",
+      "contractNumber": "NK-2024-001",
+      "type": "تركيب",
+      "projectId": "1",
+      "clientId": "1",
+      "elevatorDetails": {
+        "stops": 25,
+        "finish": "ستانلس ستيل",
+        "load": "1000 كيلو"
+      },
+      "amount": 450000,
+      "vat": 22500,
+      "total": 472500,
+      "warranty": "24 شهر",
+      "status": "نشط",
+      "createdAt": "2024-01-20T12:00:00Z"
+    },
+    {
+      "id": "2",
+      "contractNumber": "NK-2024-002",
+      "type": "صيانة",
+      "projectId": "2",
+      "clientId": "2",
+      "elevatorDetails": {
+        "stops": 8,
+        "finish": "مرآة",
+        "load": "800 كيلو"
+      },
+      "amount": 120000,
+      "vat": 6000,
+      "total": 126000,
+      "warranty": "12 شهر",
+      "status": "نشط",
+      "createdAt": "2024-02-01T10:15:00Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "1",
+      "contractId": "1",
+      "method": "تحويل",
+      "amount": 150000,
+      "date": "2024-02-15",
+      "notes": "دفعة أولى",
+      "status": "مكتمل",
+      "createdAt": "2024-02-15T14:30:00Z"
+    },
+    {
+      "id": "2",
+      "contractId": "2",
+      "method": "شيك",
+      "amount": 63000,
+      "date": "2024-03-01",
+      "notes": "دفعة مقدمة 50%",
+      "status": "مكتمل",
+      "createdAt": "2024-03-01T11:20:00Z"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "1",
+      "invoiceNumber": "INV-2024-001",
+      "clientId": "1",
+      "serviceDescription": "تركيب مصعد - المرحلة الأولى",
+      "amount": 150000,
+      "paymentMethod": "تحويل",
+      "date": "2024-02-15",
+      "status": "مدفوع",
+      "createdAt": "2024-02-15T13:00:00Z"
+    },
+    {
+      "id": "2",
+      "invoiceNumber": "INV-2024-002",
+      "clientId": "2",
+      "serviceDescription": "خدمة صيانة - الربع الأول",
+      "amount": 30000,
+      "paymentMethod": "شيك",
+      "date": "2024-03-01",
+      "status": "مدفوع",
+      "createdAt": "2024-03-01T10:45:00Z"
+    }
+  ],
+  "maintenances": [
+    {
+      "id": "1",
+      "clientId": "1",
+      "elevatorId": "ELV-001",
+      "type": "دورية",
+      "description": "فحص دوري شهري للمصعد الرئيسي",
+      "date": "2024-03-01",
+      "technician": "أحمد محمد",
+      "status": "مكتملة",
+      "notes": "تم الفحص بنجاح، لا توجد مشاكل",
+      "createdAt": "2024-03-01T09:00:00Z"
+    },
+    {
+      "id": "2",
+      "clientId": "2",
+      "elevatorId": "ELV-002",
+      "type": "وقائية",
+      "description": "تغيير زيت المحرك والفحص الشامل",
+      "date": "2024-03-15",
+      "technician": "سالم علي",
+      "status": "قيد التنفيذ",
+      "notes": "جاري العمل على الصيانة",
+      "createdAt": "2024-03-15T08:30:00Z"
+    }
+  ]
+}
