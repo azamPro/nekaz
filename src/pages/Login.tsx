@@ -97,7 +97,7 @@ export function Login() {
             type="submit"
             className="w-full"
             loading={loading}
-            disabled={!username || !password}
+            // disabled={!username || !password}
           >
             تسجيل الدخول
           </Button>
