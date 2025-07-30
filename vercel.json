@@ -1,10 +1,4 @@
 {
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-
   "builds": [
     {
       "src": "package.json",
@@ -16,7 +10,6 @@
       "use": "@vercel/node"
     }
   ],
-
   "routes": [
     {
       "src": "/api/(.*)",
@@ -27,7 +20,6 @@
       "dest": "/index.html"
     }
   ],
-
   "env": {
     "VITE_APP_ENV": "production",
     "VITE_API_BASE_URL": "/api"
