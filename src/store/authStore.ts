@@ -1,6 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { AuthState, User } from '../types';
+import { API_ENDPOINTS } from '../config/api';
+
+
 
 export const useAuthStore = create<AuthState>()(
   persist(
@@ -10,13 +13,14 @@ export const useAuthStore = create<AuthState>()(
       
       login: async (username: string, password: string) => {
         try {
+          const response = await fetch(API_ENDPOINTS.users);
           // Direct fetch to the JSON server
-          const response = await fetch('http://localhost:3001/users', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
+          // const response = await fetch('http://localhost:3001/users', {
+          //   method: 'GET',
+          //   headers: {
+          //     'Content-Type': 'application/json',
+          //   },
+          // });
           
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

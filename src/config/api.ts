@@ -1,6 +1,11 @@
 // API configuration for different environments
 const getApiBaseUrl = () => {
-  // Always use local JSON server in development
+  // Check if we're in production (Vercel deployment)
+  if (import.meta.env.VITE_APP_ENV === 'production') {
+    return import.meta.env.VITE_API_BASE_URL || 'https://nekaz.vercel.app';
+  }
+  
+  // Development environment - use local JSON server
   return 'http://localhost:3001';
 };
 
