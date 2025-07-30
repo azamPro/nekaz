@@ -30,6 +30,7 @@ export function Login() {
         showToast('error', 'اسم المستخدم أو كلمة المرور غير صحيحة');
       }
     } catch (error) {
+      console.error('Login error:', error);
       showToast('error', 'فشل في تسجيل الدخول. يرجى المحاولة مرة أخرى.');
     } finally {
       setLoading(false);
@@ -55,6 +56,7 @@ export function Login() {
         showToast('error', 'فشل في تسجيل الدخول');
       }
     } catch (error) {
+      console.error('Quick login error:', error);
       showToast('error', 'فشل في تسجيل الدخول');
     } finally {
       setLoading(false);
@@ -141,7 +143,10 @@ export function Login() {
           </div>
           
           <div className="mt-3 text-center">
-            <button className="text-xs sm:text-sm text-blue-600 hover:text-blue-800">
+            <button 
+              type="button"
+              className="text-xs sm:text-sm text-blue-600 hover:text-blue-800"
+            >
               نسيت كلمة المرور؟
             </button>
           </div>

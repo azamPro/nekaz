@@ -5,11 +5,13 @@ const getApiBaseUrl = () => {
     return import.meta.env.VITE_API_BASE_URL || 'https://nekaz.vercel.app';
   }
   
-  // Development environment
+  // Development environment - use local JSON server
   return 'http://localhost:3001';
 };
 
 export const API_BASE = getApiBaseUrl();
+
+console.log('API Base URL:', API_BASE);
 
 // For production deployment, you'll need to:
 // 1. Set up a real backend API (Node.js, .NET, etc.)
@@ -26,3 +28,5 @@ export const API_ENDPOINTS = {
   invoices: `${API_BASE}/invoices`,
   maintenances: `${API_BASE}/maintenances`,
 };
+
+console.log('API Endpoints:', API_ENDPOINTS);
