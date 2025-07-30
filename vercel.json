@@ -1,11 +1,16 @@
 {
   "rewrites": [
     {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
   "env": {
-    "VITE_APP_ENV": "production"
+    "VITE_APP_ENV": "production",
+    "VITE_API_BASE_URL": "/api"
   }
 }
